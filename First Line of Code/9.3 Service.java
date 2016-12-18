@@ -43,6 +43,30 @@ public class MyService extends Service {
 
 }
 
+
+/* MyIntentService.java */
+
+public class MyIntentService extends IntentService {
+
+    public MyIntentService() {
+        super("MyIntentService"); // 调用父类的有参构造函数
+    }
+
+    @Override
+    protected void onHandleIntent(Intent intent) {
+        // 打印当前线程的id
+        Log.d("MyIntentService", "Thread id is " + Thread.currentThread().getId());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("MyIntentService", "onDestroy executed");
+    }
+
+}
+
+
 /* MainActivity.java */
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -54,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button bindService;
 
     private Button unbindService;
+
+    private Button startIntentService;
 
     private MyService.DownloadBinder downloadBinder;
 
@@ -84,6 +110,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         unbindService = (Button) findViewById(R.id.unbind_service);
         bindService.setOnClickListener(this);
         unbindService.setOnClickListener(this);
+
+        startIntentService = (Button) findViewById(R.id.start_intent_service);
+        startIntentService.setOnClickListener(this);
     }
 
     @Override
@@ -103,6 +132,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.unbind_service:
                 unbindService(connection); // 解绑服务
+                break;
+            case R.id.start_intent_service:
+                // 打印主线程的id
+                Log.d("MainActivity", "Thread id is " + Thread.currentThread().getId());
+                Intent intentService = new Intent(this, MyIntentService.class);
+                startService(intentService);
                 break;
             default:
                 break;
