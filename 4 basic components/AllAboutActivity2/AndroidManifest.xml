@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.allaboutactivity2">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+        4. 测试App能否响应另一个App打开浏览器的动作
+
+        结果是能！
+        而且还可以传数据！
+
+        -->
+
+        <!--
+        5. 将ActivityBrowser的启动模式设置为SingleInstance
+
+        此时有两种方式进入该Activity：通过首页按钮，或者通过另一个App的intent
+        则谁最先进入该Activity，谁就创建一个实例，位于独立的返回栈中
+        之后进来的就直接应用独立返回栈中的该Activity实例，不用经过onCreate方法
+
+        -->
+        <activity android:name=".ActivityBrowser"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="http" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
