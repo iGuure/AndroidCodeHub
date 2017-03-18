@@ -1,3 +1,4 @@
+// Simple container example (produces compiler warnings).
 import java.util.*;
 
 class Apple {

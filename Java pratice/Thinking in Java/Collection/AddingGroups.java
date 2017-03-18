@@ -1,3 +1,4 @@
+// Adding groups of elements to Collection objects.
 import java.util.*;
 
 public class AddingGroups {
