@@ -32,6 +32,7 @@ class Clerk {
 		System.out.printf("生产者设置 (%d)%n", this.product);
 
 		// 通知等待区中的一个消费者可以继续工作了
+		// 其实是回到等待区！
 		notify();
 	}
 
@@ -39,7 +40,7 @@ class Clerk {
 		if (this.product == -1) {
 			try {
 				// 缺货了，请稍候！
-				wait();   3
+				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -50,6 +51,7 @@ class Clerk {
 		this.product = -1;	// 取走产品，-1表示目前店员手上无产品
 
 		// 通知等待区中的一个生产者可以继续工作了
+		// 其实是回到等待区！
 		notify();
 
 		return p;
