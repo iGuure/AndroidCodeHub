@@ -11,34 +11,36 @@ import com.example.datasaveandloadmvp.R;
 import com.example.datasaveandloadmvp.data.Data;
 import com.example.datasaveandloadmvp.presenter.DataPresenter;
 
-public class MainActivity extends AppCompatActivity implements IMainActivity, View.OnClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class MainActivity extends AppCompatActivity implements IMainActivity {
 
     private DataPresenter mDataPresenter;
 
-    private EditText editTextId;
-    private EditText editTextFirstName;
-    private EditText editTextLastName;
+    @BindView(R.id.id) EditText editTextId;
+    @BindView(R.id.firstName) EditText editTextFirstName;
+    @BindView(R.id.lastName) EditText editTextLastName;
 
-    private Button buttonSave;
-    private Button buttonLoad;
+    @BindView(R.id.save) Button buttonSave;
+    @BindView(R.id.load) Button buttonLoad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         mDataPresenter = new DataPresenter(this);
+    }
 
-        editTextId = (EditText) findViewById(R.id.id);
-        editTextFirstName = (EditText) findViewById(R.id.firstName);
-        editTextLastName = (EditText) findViewById(R.id.lastName);
+    @OnClick(R.id.save) void save() {
+        mDataPresenter.save();
+    }
 
-        buttonSave = (Button) findViewById(R.id.save);
-        buttonLoad = (Button) findViewById(R.id.load);
-
-        buttonSave.setOnClickListener(this);
-        buttonLoad.setOnClickListener(this);
-
+    @OnClick(R.id.load) void load() {
+        mDataPresenter.load();
     }
 
     @Override
@@ -64,21 +66,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Vi
     @Override
     public void setLastName(String ln) {
         editTextLastName.setText(ln);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.save:
-                Log.d("Guu", "click");
-                mDataPresenter.save();
-                break;
-            case R.id.load:
-                mDataPresenter.load();
-                break;
-            default:
-                break;
-        }
     }
 
 }
