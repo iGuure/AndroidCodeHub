@@ -1,4 +1,4 @@
 # AndroidCodeHub
-Components, UIs, architectures, Java pratices....anything about Android.
+Components, UIs, architectures, Java practices....anything about Android.
 
 Write once, use for a lifetime.
