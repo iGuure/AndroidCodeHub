@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.slidingconflicttest.Main2Activity">
+
+    <com.example.slidingconflicttest.HorizantalScrollViewEx2
+        android:id="@+id/horizontalScrollViewEx2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.example.slidingconflicttest.ListViewEx
+                android:id="@+id/content1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </com.example.slidingconflicttest.ListViewEx>
+
+            <com.example.slidingconflicttest.ListViewEx
+                android:id="@+id/content2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </com.example.slidingconflicttest.ListViewEx>
+
+            <com.example.slidingconflicttest.ListViewEx
+                android:id="@+id/content3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </com.example.slidingconflicttest.ListViewEx>
+
+        </LinearLayout>
+
+    </com.example.slidingconflicttest.HorizantalScrollViewEx2>
+
+</LinearLayout>
