@@ -8,12 +8,13 @@
     tools:context="com.example.hsb.customletterspacing.MainActivity">
 
     <com.example.hsb.customletterspacing.CustomView.CustomLetterSpacingTextView
+        android:id="@+id/specialFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="123456789666"
         android:background="#0000FF"
         android:textColor="#FF0000"
-        app:spacing="-0.8dp"
+        app:spacing="1.4dp"
         android:textSize="30sp" />
 
     <com.example.hsb.customletterspacing.CustomView.CustomLetterSpacingTextView
